@@ -259,8 +259,6 @@ GEM
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
     rack (1.6.0)
-    rack-protection (1.5.3)
-      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.0)
@@ -294,9 +292,6 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (10.4.2)
     rdoc (4.2.0)
-    refile (0.5.3)
-      mime-types
-      sinatra (~> 1.4.5)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
     rspec-core (3.1.7)
@@ -328,10 +323,6 @@ GEM
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
     sexp_processor (4.4.5)
-    sinatra (1.4.5)
-      rack (~> 1.4)
-      rack-protection (~> 1.4)
-      tilt (~> 1.3, >= 1.3.4)
     slop (3.6.0)
     spring (1.3.3)
     sprockets (2.12.3)
@@ -396,7 +387,6 @@ DEPENDENCIES
   quiet_assets
   rails (= 4.2.0)
   rails_12factor
-  refile
   rspec-rails (~> 3.1.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

@@ -16,7 +16,6 @@ gem 'fog'
 gem 'will_paginate', '~> 3.0.5'
 gem 'pundit'
 gem "mini_magick"
-gem "refile", require: ["refile/rails", "refile/image_processing"]
 gem 'faker'
 gem 'figaro'
 gem 'omniauth'

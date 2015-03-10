@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby "2.2.1"
 gem 'rails', '4.2.0'
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails'
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
@@ -16,6 +16,7 @@ gem 'fog'
 gem 'will_paginate', '~> 3.0.5'
 gem 'pundit'
 gem "mini_magick"
+gem "refile", require: ["refile/rails", "refile/image_processing"]
 gem 'faker'
 gem 'figaro'
 gem 'omniauth'

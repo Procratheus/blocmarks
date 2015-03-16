@@ -390,7 +390,6 @@ DEPENDENCIES
   omniauth-facebook
   passenger
   pg
-  pry
   pry-rails
   pundit
   quiet_assets

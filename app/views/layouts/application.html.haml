@@ -8,7 +8,8 @@
     = csrf_meta_tags
   %body
     = render "partials/navbar"
-    = render "partials/flash"
+    .container
+      = render "partials/flash"
     = yield
     = render "partials/footer"
     

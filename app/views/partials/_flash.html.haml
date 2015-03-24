@@ -2,17 +2,18 @@
   .alert.alert-success.alert-dismissible{role: "alert"}
     %button.close{"aria-label": "Close", "data-dismiss": "alert", type: "button"}
       %span{"aria-hidden": "true"}
-        @times;
+        x
     = flash[:notice]
 - elsif flash[:alert]
   .alert.alert-warning.alert-dismissible{role: "alert"}
     %button.close{"aria-label": "Close", "data-dismiss": "alert", type: "button"}
       %span{"aria-hidden": "true"}
-        @times;
+        x
     = flash[:alert]
 - elsif flash[:error]
-  %button.close{"aria-label": "Close", "data-dismiss": "alert", type: "button"}
+  .alert.alert-danger.alert-dismissible{role: "alert"}
+    %button.close{"aria-label": "Close", "data-dismiss": "alert", type: "button"}
       %span{"aria-hidden": "true"}
-        @times;
+        x
     = flash[:error]
   

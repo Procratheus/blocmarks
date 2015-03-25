@@ -11,8 +11,8 @@ class IncomingController < ApplicationController
 
     if @user
       if @topic
-        @subject = @topic.bookmarks.build(url: @body)
-        @subject.save
+        @bookmark = @topic.bookmarks.build(url: @body)
+        @bookmark.save
       else
         @subject = @user.topics.build(title: params[:subject])
         @subject.save

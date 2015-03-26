@@ -16,3 +16,17 @@
 //= require turbolinks
 //= require_tree .
 
+$(document).ready( function(){
+
+  // Style the navbar to active when selected
+  $(".navbar-nav li").on("click", function() {
+    $(".navbar-nav li.active").removeClass("active");
+    var link = $(this);
+    if (!link.hasClass("active")) {
+      link.addClass("active")      
+    } 
+  });
+
+
+});
+

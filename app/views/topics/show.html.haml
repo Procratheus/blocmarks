@@ -1,2 +1,8 @@
-%h1 Topics#show
-%p Find me in app/views/topics/show.html.haml
+%h2 
+  = "#{@topic.title}"
+- @topic.bookmarks.each do |bookmark|
+  %h4
+    = bookmark.title
+  %h4
+    = bookmark.url
+

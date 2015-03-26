@@ -30,7 +30,7 @@ class TopicsController < ApplicationController
   def update
     @topic = Topic.find(params[:id])
     topic = @topic.title
-    if @topic.update
+    if @topic.update(topics_params)
       flash[:notice] = "Your #{topic} was succesfully updated"
       redirect_to @topic
     else
@@ -55,6 +55,6 @@ class TopicsController < ApplicationController
   protected
 
   def topics_params
-    require(:topic).permit(:title)
+    params.require(:topic).permit(:title)
   end
 end

@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   resources :topics do
     resources :bookmarks
   end
+  authenticated :user do
+    root "topics#index", as: :authicated_user
+  end
   post :incoming, to: "incoming#create"
   root "welcome#index"
 end

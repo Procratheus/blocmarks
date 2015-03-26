@@ -1,2 +1,11 @@
-%h1 Topics#index
-%p Find me in app/views/topics/index.html.haml
+%h1 
+  All Topics
+-@topics.each do |topic|
+  %h2
+    = topic.title
+  - topic.bookmarks.each do |bookmark|
+    %h4 
+      = bookmark.title
+    %h4
+      = bookmark.url
+

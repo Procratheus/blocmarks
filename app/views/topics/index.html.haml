@@ -3,9 +3,9 @@
 -@topics.each do |topic|
   %h2
     = topic.title
-  - topic.bookmarks.each do |bookmark|
-    %h4 
-      = bookmark.title
-    %h4
-      = bookmark.url
+- topic.bookmarks.each do |bookmark|
+  %h4 
+    = bookmark.title
+  %h4
+    = bookmark.url
 

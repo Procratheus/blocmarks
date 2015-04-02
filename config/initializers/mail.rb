@@ -14,7 +14,7 @@ ActionMailer::Base.raise_delivery_errors = true
 
 class DevelopmentMailInterceptor
   def self.delivering_email(message)
-    message.to = "www.alex.lewis79@yahoo.co.uk"
+    message.to = "alex.lewis79@yahoo.co.uk"
     message.cc = nil
     message.bcc = nil
   end

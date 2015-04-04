@@ -1,13 +1,15 @@
 class BookmarksController < ApplicationController
   before_action :set_topic
   before_action :set_bookmark, except: [:create, :new]
+  require "embedly"
+  require "json"
 
   def show
-    
+    @bookmark = Bookmark.find(params[:id])
+    @url = embedly_url.oembed(url: @bookmark.url).first
   end
 
-  def new
-    
+  def new  
     @bookmark = Bookmark.new
   end
 
@@ -40,4 +42,11 @@ class BookmarksController < ApplicationController
   def set_bookmark
     @bookmark = Bookmark.find(params[:id])
   end
+
+  private
+
+  def embedly_url
+    embedly_api = Embedly::API.new :key => ENV["EMBEDLY_API_KEY"],
+              :user_agent => "Mozilla/5.0 (compatible; mytestapp/1.0; my@email.com)"
+  end 
 end

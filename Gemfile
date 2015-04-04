@@ -22,6 +22,7 @@ gem 'figaro'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'devise'
+gem 'embedly'
 
 group :development, :test do
   gem 'byebug'

@@ -6,7 +6,7 @@
   .col-md-8
   - @topic.bookmarks.each do |bookmark|
     %p.lead
-      = link_to "#{bookmark.title}", topic_bookmark_path(@topic, @bookmark)
+      = link_to "#{bookmark.url}", topic_bookmark_path(@topic, bookmark)
     %p
       = bookmark.url
   .col-md-4

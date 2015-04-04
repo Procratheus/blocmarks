@@ -11,6 +11,7 @@ Bookmark.delete_all
     email: Faker::Internet.email,
     password: Faker::Lorem.characters(8...20)
     )
+  user.skip_confirmation!
   user.save!
 end
 
@@ -19,7 +20,7 @@ users = User.all
 #Create Topics
 10.times do 
   topic = Topic.new(
-    user_id: users.sample,
+    user: users.sample,
     title: Faker::Lorem.word
     )
   topic.save!
@@ -30,7 +31,7 @@ topics = Topic.all
 #Create Bookmarks
 20.times do 
   bookmark = Bookmark.new(
-    topic_id: topics.sample,
+    topic: topics.sample,
     url: Faker::Internet.url
     )
   bookmark.save!

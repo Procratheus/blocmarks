@@ -1,18 +1,24 @@
 class TopicsController < ApplicationController
   def index
     @topics = Topic.all
+    authorize @topics
   end
 
   def show
     @topic = Topic.find(params[:id])
+    authorize @topic
+    @bookmark = @topic.bookmarks
+    authorize @bookmark
   end
 
   def new
-    @topic = cuurent_user.topics.new
+    @topic = current_user.topics.new
+    authorize @topic
   end
 
   def create
     @topic = current_user.topics.build(topics_params)
+    authorize @topic
     topic = @topic.title
     if @topic.save
       flash[:notice] = "Your #{topic} was succesfully created"
@@ -25,10 +31,12 @@ class TopicsController < ApplicationController
 
   def edit
     @topic = Topic.find(params[:id])
+    authorize @topic    
   end
 
   def update
     @topic = Topic.find(params[:id])
+    authorize @topic
     topic = @topic.title
     if @topic.update(topics_params)
       flash[:notice] = "Your #{topic} was succesfully updated"
@@ -41,6 +49,7 @@ class TopicsController < ApplicationController
 
   def destroy
     @topic = Topic.find(params[:id])
+    authorize @topic
     topic = @topic.title
     if @topic.destroy
       flash[:notice] = "Your #{topic} was succesfully updated"

@@ -9,11 +9,13 @@ class BookmarksController < ApplicationController
   end
 
   def new  
-    @bookmark = @topic.bookmark.new
+    @bookmark = @topic.bookmarks.new
+    authorize @bookmark
   end
 
   def create
     @bookmark = @topic.bookmark.build(bookmark_params)
+    authorize @bookmark
     if @bookmark.save
       flash[:notice] = "Your bookmark was sucessfully created"
       redirect_to @bookmark
@@ -55,10 +57,12 @@ class BookmarksController < ApplicationController
 
   def set_topic
     @topic = Topic.find(params[:topic_id])
+    authorize @topic
   end
 
   def set_bookmark
     @bookmark = @topic.bookmarks.find(params[:id])
+    authorize @bookmark
   end
 
   private

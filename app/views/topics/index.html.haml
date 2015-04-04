@@ -2,7 +2,8 @@
   .col-md-2
     %h1
       Topics
-    = link_to "New Topic", new_topic_path, class: "btn btn-success"
+    - if policy(Topic.new).create?
+      = link_to "New Topic", new_topic_path, class: "btn btn-success"
   .col-md-8   
     - @topics.each do |topic|
       .media

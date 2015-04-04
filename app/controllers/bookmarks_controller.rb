@@ -5,34 +5,52 @@ class BookmarksController < ApplicationController
   require "json"
 
   def show
-    @bookmark = Bookmark.find(params[:id])
     @url = embedly_url.oembed(url: @bookmark.url).first
   end
 
   def new  
-    @bookmark = Bookmark.new
+    @bookmark = @topic.bookmark.new
   end
 
   def create
-    @bookmark = Bookmark.build(bookmark_params)
+    @bookmark = @topic.bookmark.build(bookmark_params)
+    if @bookmark.save
+      flash[:notice] = "Your bookmark was sucessfully created"
+      redirect_to @bookmark
+    else
+      flash[:error] = "There was a problem creating your bookmark. Please try again."
+      redirect_to @bookmark
+    end    
   end
 
   def edit
-    
+
   end
 
   def update
-    
+    if @bookmark.update
+      flash[:notice] = "Your bookmark was succesfully updated"
+      redirect_to @bookmark
+    else
+      flash[:error] = "There was a problem updating your bookmark. Please try again."
+      redirect_to @bookmark
+    end    
   end
 
   def destroy
-    
+    if @bookmark.destroy
+      flash[:notice] = "Your bookmark was successfully deleted."
+      redirect_to @topic
+    else
+      flash[:error] = "There was problem deleting your bookmark. Please try again."
+      redirect_to @bookmark    
+    end
   end
 
   protected
 
   def bookmark_params
-    params.require(:bookmark).permit(:title, :url)
+    params.require(:bookmark).permit(:url)
   end
 
   def set_topic
@@ -40,7 +58,7 @@ class BookmarksController < ApplicationController
   end
 
   def set_bookmark
-    @bookmark = Bookmark.find(params[:id])
+    @bookmark = @topic.bookmarks.find(params[:id])
   end
 
   private

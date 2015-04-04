@@ -1,17 +1,19 @@
-%h1 
-  Topics
 .row
+  .col-md-2
+    %h1
+      Topics
+    = link_to "New Topic", new_topic_path, class: "btn btn-success"
   .col-md-8   
     - @topics.each do |topic|
       .media
         .media-body
           %h4.media-heading 
-            = topic.title
-      - topic.bookmarks.each do |bookmark|
-        .media-body
-          %h4.media-heading 
-            = bookmark.url          
-  .col-md-4
-    = link_to "New Topic", new_topic_path, class: "btn btn-success"
+            = link_to "##{topic.title}", topic_path(topic)
+          - topic.bookmarks.each do |bookmark|
+            .media-body
+              %h6.media-heading 
+                = link_to "#{bookmark.url}", topic_bookmark_path(topic, bookmark)          
+  .col-md-2
+    
 
 

@@ -1,16 +1,21 @@
 .navbar.navbar-default
   .container
-    = link_to "Blocmarks", "#", class: "navbar-brand"
-    %ul.nav.navbar-nav
+    %ul.nav.navbar-nav.navbar-left
+      %li
+        = link_to "Blocmarks", "#", class: "navbar-brand"
       %li.active
-        = link_to "Home", root_path   
+        = link_to "Home", root_path
       - if current_user
         %li
+          = link_to "All Blocmarks", topics_path
+        %li
+          = link_to "My Blocmarks ", topics_path   
+    %ul.nav.navbar-nav.navbar-right
+      - if current_user
+        %li
+          = link_to "Welcome #{current_user.name}", edit_user_registration_path
+        %li
           = link_to "Sign out", destroy_user_session_path, method: :delete
-        %li
-          = link_to current_user.name, edit_user_registration_path
-        %li
-          = link_to "#{current_user.name} Blocmarks ", topics_path
       - else  
         %li
           = link_to "Sign in", new_user_session_path

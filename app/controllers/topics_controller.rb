@@ -8,7 +8,7 @@ class TopicsController < ApplicationController
   end
 
   def new
-    @topic = Topic.new
+    @topic = cuurent_user.topics.new
   end
 
   def create
@@ -46,7 +46,7 @@ class TopicsController < ApplicationController
       flash[:notice] = "Your #{topic} was succesfully updated"
       redirect_to @topic
     else
-      flash[:error] = "Your #{topic} was not successfully updated. Please try again."
+      flash[:error] = "Your #{topic} was not successfully deleted. Please try again."
       redirect_to topic_path
     end 
 

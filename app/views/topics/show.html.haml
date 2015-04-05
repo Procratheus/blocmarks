@@ -13,9 +13,8 @@
         %br/
         %br/
         - @bookmarks.each do |bookmark|
-          .media-body
-            %h6
-            = link_to "#{bookmark.url}", [@topic, @bookmark]
+          %h6
+          = link_to "#{bookmark.url}", [@topic, bookmark]
   .col-md-1
     
     

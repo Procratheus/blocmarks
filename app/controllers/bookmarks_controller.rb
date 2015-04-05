@@ -5,7 +5,7 @@ class BookmarksController < ApplicationController
   require "json"
 
   def show
-    @url = embedly_url.oembed(url: @bookmark.url).first
+    @url = embedly_url.oembed(url: @bookmark.url)
   end
 
   def new  
@@ -31,7 +31,7 @@ class BookmarksController < ApplicationController
 
   def update
     authorize @bookmark
-    if @bookmark.update
+    if @bookmark.update(bookmark_params)
       flash[:notice] = "Your bookmark was succesfully updated"
       redirect_to @topic
     else

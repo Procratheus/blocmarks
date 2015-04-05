@@ -7,9 +7,8 @@ class TopicsController < ApplicationController
   def show
     @topic = Topic.find(params[:id])
     @bookmarks = @topic.bookmarks
-    @bookmark = Bookmark.find(params[:id])
     authorize @topic
-    authorize @bookmark
+    authorize @bookmarks
   end
 
   def new

@@ -12,10 +12,10 @@
       .media-body
         %br/
         %br/
-        - @bookmark.each do |bookmark|
+        - @bookmarks.each do |bookmark|
           .media-body
             %h6
-            = link_to "#{bookmark.url}", topic_bookmark_path(@topic, @bookmark)
+            = link_to "#{bookmark.url}", [@topic, @bookmark]
   .col-md-1
     
     

@@ -11,9 +11,8 @@
           %h4.media-heading 
             = link_to "##{topic.title}", topic_path(topic)
           - topic.bookmarks.each do |bookmark|
-            .media-body
-              %h6.media-heading 
-                = link_to "#{bookmark.url}", topic_bookmark_path(topic, bookmark)          
+            %h6.media-heading 
+              = link_to "#{bookmark.url}", topic_bookmark_path(topic, bookmark)          
   .col-md-2
     
 

@@ -1,5 +1,5 @@
 .row
-  .col-md-4
+  .col-md-3
     %h1 
       =# "#{@url}"
     - if policy(@bookmark).update?
@@ -7,7 +7,7 @@
         = link_to "Edit", edit_topic_bookmark_path(@topic, @bookmark), class: "btn btn-success btn-xs"
         = link_to "Delete", topic_bookmark_path(@topic, @bookmark), method: :delete, class: "btn btn-danger btn-xs", data: { confirm: "Are you sure you want to delete this bookmark?"}
         = render partial: "likes/like", locals: { topic: @topic, bookmark: @bookmark }
-  .col-md-8
+  .col-md-9
     .media
       .media-body
         %br/

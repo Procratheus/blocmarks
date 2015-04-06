@@ -18,10 +18,10 @@ class BookmarksController < ApplicationController
     authorize @bookmark
     if @bookmark.save
       flash[:notice] = "Your bookmark was sucessfully created"
-      redirect_to @topic
+      redirect_to [@topic, @bookmark]
     else
       flash[:error] = "There was a problem creating your bookmark. Please try again."
-      redirect_to @topic
+      redirect_to [@topic, @bookmark]
     end    
   end
 
@@ -33,10 +33,10 @@ class BookmarksController < ApplicationController
     authorize @bookmark
     if @bookmark.update(bookmark_params)
       flash[:notice] = "Your bookmark was succesfully updated"
-      redirect_to @topic
+      redirect_to [@topic, @bookmark]
     else
       flash[:error] = "There was a problem updating your bookmark. Please try again."
-      redirect_to @bookmark
+      redirect_to [@topic, @bookmark]
     end    
   end
 

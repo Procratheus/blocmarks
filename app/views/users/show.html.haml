@@ -1,2 +1,34 @@
-%h1 Users#show
-%p Find me in app/views/users/show.html.haml
+%h2 
+  My Blocmarks
+.row
+  .col-md-2
+  .col-md-8
+    - @user_bookmarks.each do |topic|
+      %h2
+        = link_to "##{topic.title}", topic_path(topic)
+      - topic.bookmarks.each do |bookmark|
+        %h4
+          = link_to "#{bookmark.url}", topic_bookmark_path(topic, bookmark)
+        %h5
+          = link_to "remove", topic_bookmark_path(topic, bookmark), method: :delete
+  .col-md-2
+%h2  
+  My Liked Blocmarks
+.row
+  .col-md-2
+  .col-md-8
+    - Topic.all.each do |topic|
+      - @bookmark_array = []
+      - @user_likes.each do |like|
+        - if like.bookmark.topic == topic
+          - @bookmark_array << like.bookmark
+        - @bookmark_array
+      - if @bookmark_array.length > 0
+        %h2
+          = link_to "##{topic.title}", topic_path(topic)
+      - @bookmark_array.each do |bookmark|
+        %h4
+          = link_to "#{bookmark.url}", topic_bookmark_path(topic, bookmark)
+        %h5
+          = render partial: "likes/like", locals: {topic: topic, bookmark: bookmark}
+  .col-md-2

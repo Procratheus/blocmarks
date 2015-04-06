@@ -1,11 +1,12 @@
 .row
-  .col-md-3
+  .col-md-4
     %h1 
-      =# "#{@url.provider_name}"
+      =# "#{@url}"
     - if policy(@bookmark).update?
       %div
         = link_to "Edit", edit_topic_bookmark_path(@topic, @bookmark), class: "btn btn-success btn-xs"
         = link_to "Delete", topic_bookmark_path(@topic, @bookmark), method: :delete, class: "btn btn-danger btn-xs", data: { confirm: "Are you sure you want to delete this bookmark?"}
+        = render partial: "likes/like", locals: { topic: @topic, bookmark: @bookmark }
   .col-md-8
     .media
       .media-body
@@ -13,4 +14,3 @@
         %br/
         %div
           = @url
-  .col-md-1

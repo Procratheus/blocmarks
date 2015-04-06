@@ -9,11 +9,13 @@ class User < ActiveRecord::Base
   has_many :likes, dependent: :destroy
 
   # omniauth model method
-  def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.email = auth.info.email
-      user.password = Devise.friendly_token[0,20]
-      user.name = auth.info.name
+  def self.from_omniauth(auth, signed_in_resource=nil)
+    if user = User.where(email: auth["email"]).first
+      user
+    else
+      user = User.new(email: auth.info.email, password: Devise.friendly_token[0,20], name: auth.info.name)
+      user.skip_confirmation!
+      user.save
     end
   end
 

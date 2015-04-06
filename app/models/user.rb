@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
          :omniauthable, :omniauth_providers => [:facebook]
 
   has_many :topics, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   # omniauth model method
   def self.from_omniauth(auth)
@@ -14,5 +15,10 @@ class User < ActiveRecord::Base
       user.password = Devise.friendly_token[0,20]
       user.name = auth.info.name
     end
+  end
+
+  # Likes method
+  def liked(bookmark)
+    likes.where(bookmark_id: bookmark.id).first
   end
 end

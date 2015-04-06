@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 
   # omniauth model method
   def self.from_omniauth(auth, signed_in_resource=nil)
-    if user = User.where(email: auth["email"]).first
+    if user = User.where(email: auth["email"])
       user
     else
       user = User.new(email: auth.info.email, password: Devise.friendly_token[0,20], name: auth.info.name)

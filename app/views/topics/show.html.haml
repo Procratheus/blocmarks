@@ -1,5 +1,5 @@
 .row
-  .col-md-3
+  .col-md-4
     %h1 
       = "##{@topic.title}"
     - if policy(@topic).edit? 
@@ -7,6 +7,7 @@
       = link_to "Delete Topic", topic_path(@topic), method: :delete, class: "btn btn-danger btn-xs", data: { confirm: "Are you sure you want to delete this topic?"}
     - if policy(Bookmark.new).create?
       = link_to "New Bookmark", new_topic_bookmark_path(@topic, @topic.bookmarks.new), class: "btn btn-info btn-xs"
+      = link_to "Back", :back, class: "btn btn-info btn-xs"
   .col-md-8
     .media
       .media-body
@@ -15,7 +16,6 @@
         - @bookmarks.each do |bookmark|
           %h6
           = link_to "#{bookmark.url}", [@topic, bookmark]
-  .col-md-1
     
     
 

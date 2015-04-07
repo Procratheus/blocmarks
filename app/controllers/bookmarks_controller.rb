@@ -6,6 +6,7 @@ class BookmarksController < ApplicationController
 
   def show
     @url = embedly_url.oembed(url: @bookmark.url)
+    @ruby_url = @url[0].marshal_dump
   end
 
   def new  

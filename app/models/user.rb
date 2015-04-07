@@ -10,13 +10,19 @@ class User < ActiveRecord::Base
 
   # omniauth model method
   def self.from_omniauth(auth, signed_in_resource=nil)
-    if user = User.where(email: auth["email"])
-      user
+    data = auth.extra.raw_info
+    if user = User.where(email: data["email"]).first
+      return user
     else
-      user = User.new(email: auth.info.email, password: Devise.friendly_token[0,20], name: auth.info.name)
+      user = User.new(email: data.email, password: Devise.friendly_token[0,20], name: data.name)
       user.skip_confirmation!
       user.save
+      return user
     end
+  end
+
+  def skip_confirmation!
+    self.confirmed_at = Time.now
   end
 
   # Likes method

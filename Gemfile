@@ -31,7 +31,7 @@ group :development, :test do
   gem "better_errors"
 end
 
-group :test do
+group :development, :test do
   gem 'rspec-rails', '~> 3.1.0'
   gem 'capybara', '~> 2.3.0'
   gem 'database_cleaner'

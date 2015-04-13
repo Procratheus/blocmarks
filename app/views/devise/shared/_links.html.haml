@@ -1,9 +1,10 @@
 - if devise_mapping.omniauthable?
   - resource_class.omniauth_providers.each do |provider|
-    = link_to omniauth_authorize_path(resource_name, provider), class: "btn btn-block btn-social btn-facebook" do 
+    = link_to omniauth_authorize_path(resource_name, provider), class: "btn btn-facebook" do 
       %i.fa.fa-facebook
-      Sign in with #{provider.to_s.titleize}
-    %br/
+        Sign in with #{provider.to_s.titleize}
+  %br/
+  %br/
 - if controller_name != 'sessions'
   = link_to "Sign in with email", new_session_path(resource_name), class: "btn btn-info"
   %br/

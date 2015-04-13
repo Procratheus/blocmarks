@@ -17,18 +17,12 @@
 .row
   .col-md-2
   .col-md-8
-    - Topic.all.each do |topic|
-      - @bookmark_array = []
-      - @user_likes.each do |like|
-        - if like.bookmark.topic == topic
-          - @bookmark_array << like.bookmark
-        - @bookmark_array
-      - if @bookmark_array.length > 0
-        %h2
-          = link_to "##{topic.title}", topic_path(topic)
-      - @bookmark_array.each do |bookmark|
-        %h4
+    - @bookmarks.each do |topic, bookmarks|
+      %h2
+        = link_to "##{topic.title}", topic_path(topic)
+      - bookmarks.each do |bookmark|
+        %h4 
           = link_to "#{bookmark.url}", topic_bookmark_path(topic, bookmark)
-        %h5
+        %h4
           = render partial: "likes/like", locals: {topic: topic, bookmark: bookmark}
   .col-md-2
